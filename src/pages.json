@@ -1,0 +1,190 @@
+{
+  "easycom": {
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  },
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/home/index"
+    },
+    {
+      "path": "pages/lottery/index"
+    },
+    {
+      "path": "pages/finance/index"
+    },
+    {
+      "path": "pages/share/index"
+    },
+    {
+      "path": "pages/mine/index"
+    },
+    {
+      "path": "pages/home/sign-in"
+    },
+    {
+      "path": "pages/home/tips"
+    },
+    {
+      "path": "pages/home/activity"
+    },
+	{
+	  "path": "pages/home/tips-detail"
+	},
+	{
+	  "path": "pages/finance/in"
+	},
+	{
+	  "path": "pages/finance/out"
+	},
+	{
+	  "path": "pages/finance/convert-record"
+	},
+	{
+	  "path": "pages/finance/convert-profit"
+	},
+	{
+	  "path": "pages/finance/convert-rule" // 金融规则
+	},
+	{
+	  "path": "pages/mine/customer-service"
+	},
+	{
+	  "path": "pages/mine/integral-record"
+	},
+	{
+	  "path": "pages/mine/my-profile" // 个人信息修改
+	},
+	{
+	  "path": "pages/mine/change-password" // 登录密码
+	},
+	{
+	  "path": "pages/mine/change-pay-password" // 交易密码
+	},
+  {
+	  "path": "pages/mine/change-setpay-password" // 设置交易密码
+  },
+	{
+	  "path": "pages/mine/change-outmoney-address" // 添加地址
+	},
+	{
+	  "path": "pages/mine/shop" // 积分商城
+	},
+	{
+		"path": "pages/mine/gift-code" // 礼物密码
+	},
+	{
+		"path": "pages/mine/gift-record"
+	},
+	{
+		"path": "pages/finance/work-order" // 工单
+	},
+	{
+		"path": "pages/mine/beginner-guide" // 新手指引
+	},
+	{
+		"path": "pages/mine/message" // 消息
+	},
+	{
+		"path": "pages/mine/message-detail" // 消息
+	},
+	{
+		"path": "pages/mine/bet-sum" // 投注金额
+	},
+	{
+	  "path": "pages/mine/exchange" // 兑换码
+	},
+	{
+	  "path": "pages/mine/team" // 团队
+	},
+	{
+	  "path": "pages/mine/trading-record" // 资金明细
+	},
+	{
+	  "path": "pages/lottery/game-record" // 投注记录
+	},
+	{
+	  "path": "pages/lottery/win-record" // 中奖记录
+	},
+	{
+		"path": "pages/lottery/trend" // 走势图
+	},
+	{
+	  "path": "pages/finance/recharge" // 充值
+	},
+	{
+	  "path": "pages/finance/draw-money" // 提现
+	},
+	{
+	  "path": "pages/login/index" // 登录
+	},
+	{
+	  "path": "pages/lottery/win" // win
+	},
+	{
+	  "path": "pages/share/draw-money" // 分享提款
+	},
+	{
+	  "path": "pages/share/withdraw-record" // 分享提款记录
+	},
+	{
+	  "path": "pages/share/share-list" // 分享列表
+	},
+	{
+		"path": "pages/share/result-trend" // 分享列表
+	},
+	{
+	  "path": "pages/mine/team-list" // 团队人数列表
+	},
+	{
+		"path": "pages/mine/membership" // 团队人数列表
+	},
+	
+	{
+		"path": "pages/mine/total-report" // 报表总计
+	},
+	{
+		"path": "pages/mine/bonous-history" // 团队人数列表
+	},
+	{
+		"path": "pages/finance/transfer/index" // 转账
+	},
+	{
+		"path": "pages/finance/transfer/record" // 转账
+	},
+	{
+		"path": "pages/finance/covert/index" // 转账
+	},
+	{
+		"path": "pages/finance/covert/record" // 转账
+	},
+	{
+		"path": "pages/finance/index" // 理财
+	},
+	{
+		"path": "pages/mission/index" // 理财
+	}
+  ],
+  "tabBar":{
+		"custom":true, 
+		"list":[{
+			"pagePath":"pages/home/index",
+			"text":"Home"
+		},{
+			"pagePath":"pages/lottery/index",
+			"text":"Lottery"
+		},{
+			"pagePath":"pages/mission/index",
+			"text":"Mission"
+		},{
+			"pagePath":"pages/share/index",
+			"text":"Share"
+		},{
+			"pagePath":"pages/mine/index",
+			"text":"Mine"
+		}]
+	},
+  "globalStyle": {
+    "navigationStyle": "custom"
+  }
+}

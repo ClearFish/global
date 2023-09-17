@@ -24,38 +24,38 @@ export default{
   },
   computed:{
 	 list(){
-		//  let arr = [
-    //     {   
-    //       pagePath:'/pages/home/index',
-    //       iconPath:'/static/tabbar/home.min.png',
-    //       selectedIconPath:'/static/tabbar/home_selected.min.png',
-    //       text: this.$t('tabber.home')
-    //     },
-    //     {   
-    //       pagePath:'/pages/lottery/index',
-    //       iconPath:'/static/tabbar/predict.png',
-    //       selectedIconPath:'/static/tabbar/predict_selected.png',
-    //       text: this.$t('tabber.lottery')
-    //     },
-    //     {   
-    //       pagePath:'/pages/mission/index',
-    //       iconPath:'/static/tabbar/mission.svg',
-    //       selectedIconPath:'/static/tabbar/mission.svg',
-    //       text: 'Mission'
-    //     },
-    //     {   
-    //       pagePath:'/pages/share/index',
-    //       iconPath:'/static/tabbar/share.png',
-    //       selectedIconPath:'/static/tabbar/share_selected.png',
-    //       text: this.$t('tabber.share')
-    //     },
-    //     {   
-    //       pagePath:'/pages/mine/index',
-    //       iconPath:'/static/tabbar/mine.min.png',
-    //       selectedIconPath:'/static/tabbar/mine_selected.min.png',
-    //       text: this.$t('tabber.mine')
-    //     }
-    //   ]
+		 let arr = [
+        {
+          pagePath:'',
+          text: "Menu",
+          iconPath:'/static/tabbar/menu.svg',
+          selectedIconPath:"/static/tabbar/menu_active.svg"
+        },
+        {   
+          pagePath:'/pages/promotion/index',
+          text: 'Promotion',
+           iconPath:'/static/tabbar/gift.svg',
+          selectedIconPath:"/static/tabbar/gift_active.svg"
+        },
+        {   
+          pagePath:'/pages/home/index',
+          text: this.$t('tabber.home'),
+           iconPath:'/static/tabbar/home.svg',
+          selectedIconPath:"/static/tabbar/home_active.svg"
+        },
+        {   
+          pagePath:'/pages/deposit/index',
+          text: 'Deposit',
+           iconPath:'/static/tabbar/deposit.svg',
+          selectedIconPath:"/static/tabbar/deposit_active.svg"
+        },
+        {   
+          pagePath:'/pages/member/index',
+          text: 'Member',
+           iconPath:'/static/tabbar/members.svg',
+          selectedIconPath:"/static/tabbar/members_active.svg"
+        },
+      ]
 	  return arr
 	 } 
   },
@@ -91,26 +91,6 @@ export default{
     .icon{
       width: 25px;
       height: 25px;
-    }
-  }
-  .tabBarItem:nth-child(3) view{
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: #fff;
-    // position: absolute;
-    // top: -45px;
-    // top: 50%;
-    margin-top: -30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // border: 0.2px solid #e4e7ed;
-    // z-index: 1 !important;
-    .icon{
-      width: 39px;
-      height: 39px;
-      z-index: 9;
     }
   }
   .select{

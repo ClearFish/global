@@ -1,5 +1,8 @@
 <template>
-    <view>home</view>
+    <view>
+        <view>home</view>
+        <Tabbar :current="4"></Tabbar>
+    </view>
 </template>
 
 <script>

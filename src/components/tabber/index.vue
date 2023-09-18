@@ -75,11 +75,11 @@ export default{
   width: 100%;
   position: fixed;
   bottom: 0;
-  height: 55px;
+  height: 75px;
   max-width: 600px;
   z-index: 998;
-  background-color: rgb(255, 255, 255);
-  border-top: 0.2px solid #e4e7ed;
+  background-color: #1f272f;
+  border-top: 0.2px solid #334250;
   .tabBarItem{
     color: rgb(112, 112, 112);
     font-size: 13px!important;

@@ -42,7 +42,7 @@ export default {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     border-bottom: 1px solid #323b45;
     background-color: #0f1923;
     .left {

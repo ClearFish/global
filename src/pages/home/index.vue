@@ -83,7 +83,7 @@
                 </view>
             </view>
         </view>
-        <Tabbar :current="4"></Tabbar>
+        <Tabbar></Tabbar>
     </view>
 </template>
 
@@ -233,6 +233,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 99;
     .left_logo {
         width: 44px;
         height: 44px;

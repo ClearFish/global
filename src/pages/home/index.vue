@@ -67,6 +67,21 @@
                     </view>
                 </view>
             </view>
+            <view class="game_list_box">
+                <view class="title_list">
+                    <view v-for="(item,index) in titleList" 
+                        :key="index" class="title_item" 
+                        :class="chosedIndex == index ? 'actived' : '' "
+                        @click="choseType(item,index)"
+                    >
+                        <img :src="item.icon" alt="">
+                        <text class="name">{{item.title}}</text>
+                    </view>
+                </view>
+                <view class="container_box_menu">
+                    <component :is="componentName"></component>
+                </view>
+            </view>
         </view>
         <Tabbar :current="4"></Tabbar>
     </view>
@@ -76,12 +91,16 @@
 import Tabbar from '@/components/tabber/index'
 import Header from "@/components/header/index"
 import ScroolNumber from "./components/scrollNumber.vue"
+import Lobby from "./components/Lobby.vue"
 import {mapState} from 'vuex'
 import {advertise} from '@/api/index'
 import img1 from "@/static/home/scrrol1.webp"
 import img2 from "@/static/home/scrrol2.webp"
+import {mockData} from "@/utils/mockdata.js"
+import LobbyIcon from "@/static/home/lobby.svg"
+import Rocket from "@/static/home/rocket.svg"
 export default {
-    components: {Tabbar,Header,ScroolNumber},
+    components: {Tabbar,Header,ScroolNumber,Lobby},
     onLoad() {
         this.getAdvertise() // 轮播
         this.setNumber()
@@ -99,428 +118,17 @@ export default {
                 {imgUrl:img2,title:'Got Bonus & Bet'},
                 {imgUrl:img2,title:'Got Bonus & Bet'}
             ],
-            mockData:[
-  {
-    "vo": {
-      "recordId": 271634916,
-      "merchantCode": "goal11brl",
-      "customerId": 96224363,
-      "customerName": "********obi",
-      "gameType": "RNG",
-      "vendor": "TA",
-      "gameId": "TA0016",
-      "gameCode": "TA0016",
-      "gameName": "Crazy777",
-      "prizeModeId": null,
-      "nodeId": "175437",
-      "winAmount": 400,
-      "playerRank": null,
-      "gameTime": "2023-09-17 23:38:19",
-      "endTime": "2023-09-17 23:47:28",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/TA/EN/TA0016.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271841714,
-      "merchantCode": "goal11brl",
-      "customerId": 98621238,
-      "customerName": "******e80",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE101",
-      "gameCode": "PGE101",
-      "gameName": "Fortune Tiger",
-      "prizeModeId": null,
-      "nodeId": "179207",
-      "winAmount": 200,
-      "playerRank": null,
-      "gameTime": "2023-09-18 10:34:44",
-      "endTime": "2023-09-18 10:46:59",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE101.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271739727,
-      "merchantCode": "goal11brl",
-      "customerId": 97772968,
-      "customerName": "******s47",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE103",
-      "gameCode": "PGE103",
-      "gameName": "Destiny of Sun & Moon",
-      "prizeModeId": null,
-      "nodeId": "179209",
-      "winAmount": 153.6,
-      "playerRank": null,
-      "gameTime": "2023-09-18 05:08:33",
-      "endTime": "2023-09-18 05:19:19",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE103.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271675078,
-      "merchantCode": "goal11brl",
-      "customerId": 95214430,
-      "customerName": "********nda",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 105,
-      "playerRank": null,
-      "gameTime": "2023-09-18 01:42:46",
-      "endTime": "2023-09-18 01:46:26",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 272062749,
-      "merchantCode": "goal11brl",
-      "customerId": 96194432,
-      "customerName": "****uga",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 100,
-      "playerRank": null,
-      "gameTime": "2023-09-18 21:40:25",
-      "endTime": "2023-09-18 21:49:40",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 272005094,
-      "merchantCode": "goal11brl",
-      "customerId": 96194432,
-      "customerName": "****uga",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE048",
-      "gameCode": "PGE048",
-      "gameName": "Fortune Mouse",
-      "prizeModeId": null,
-      "nodeId": "179162",
-      "winAmount": 100,
-      "playerRank": null,
-      "gameTime": "2023-09-18 19:00:27",
-      "endTime": "2023-09-18 19:05:35",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE048.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271896548,
-      "merchantCode": "goal11brl",
-      "customerId": 95950940,
-      "customerName": "**********s21",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 100,
-      "playerRank": null,
-      "gameTime": "2023-09-18 13:22:19",
-      "endTime": "2023-09-18 13:32:29",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271684451,
-      "merchantCode": "goal11brl",
-      "customerId": 95214430,
-      "customerName": "********nda",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 96,
-      "playerRank": null,
-      "gameTime": "2023-09-18 02:08:37",
-      "endTime": "2023-09-18 02:16:22",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271911760,
-      "merchantCode": "goal11brl",
-      "customerId": 98796612,
-      "customerName": "*********era",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE120",
-      "gameCode": "PGE120",
-      "gameName": "Fortune Rabbit",
-      "prizeModeId": null,
-      "nodeId": "179226",
-      "winAmount": 93,
-      "playerRank": null,
-      "gameTime": "2023-09-18 14:12:29",
-      "endTime": "2023-09-18 14:17:30",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE120.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271881582,
-      "merchantCode": "goal11brl",
-      "customerId": 97493153,
-      "customerName": "***der",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE120",
-      "gameCode": "PGE120",
-      "gameName": "Fortune Rabbit",
-      "prizeModeId": null,
-      "nodeId": "179226",
-      "winAmount": 87,
-      "playerRank": null,
-      "gameTime": "2023-09-18 12:46:32",
-      "endTime": "2023-09-18 12:47:26",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE120.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 272052132,
-      "merchantCode": "goal11brl",
-      "customerId": 95264233,
-      "customerName": "***818",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE120",
-      "gameCode": "PGE120",
-      "gameName": "Fortune Rabbit",
-      "prizeModeId": null,
-      "nodeId": "179226",
-      "winAmount": 85.75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 21:14:43",
-      "endTime": "2023-09-18 21:19:48",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE120.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271821655,
-      "merchantCode": "goal11brl",
-      "customerId": 96592953,
-      "customerName": "********aah",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE120",
-      "gameCode": "PGE120",
-      "gameName": "Fortune Rabbit",
-      "prizeModeId": null,
-      "nodeId": "179226",
-      "winAmount": 85.5,
-      "playerRank": null,
-      "gameTime": "2023-09-18 09:49:18",
-      "endTime": "2023-09-18 09:49:37",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE120.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271748496,
-      "merchantCode": "goal11brl",
-      "customerId": 98629049,
-      "customerName": "*****203",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE101",
-      "gameCode": "PGE101",
-      "gameName": "Fortune Tiger",
-      "prizeModeId": null,
-      "nodeId": "179207",
-      "winAmount": 84,
-      "playerRank": null,
-      "gameTime": "2023-09-18 05:38:45",
-      "endTime": "2023-09-18 05:50:12",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE101.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 272000163,
-      "merchantCode": "goal11brl",
-      "customerId": 98757831,
-      "customerName": "*******ima",
-      "gameType": "RNG",
-      "vendor": "CQ9",
-      "gameId": "CQ0424",
-      "gameCode": "CQ0424",
-      "gameName": "Funky Bingo",
-      "prizeModeId": null,
-      "nodeId": "175830",
-      "winAmount": 80,
-      "playerRank": null,
-      "gameTime": "2023-09-18 18:37:07",
-      "endTime": "2023-09-18 18:50:23",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/CQ9/EN/CQ0424.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271748497,
-      "merchantCode": "goal11brl",
-      "customerId": 98629049,
-      "customerName": "*****203",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE101",
-      "gameCode": "PGE101",
-      "gameName": "Fortune Tiger",
-      "prizeModeId": null,
-      "nodeId": "179207",
-      "winAmount": 79.2,
-      "playerRank": null,
-      "gameTime": "2023-09-18 05:38:58",
-      "endTime": "2023-09-18 05:50:12",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE101.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271794693,
-      "merchantCode": "goal11brl",
-      "customerId": 98719995,
-      "customerName": "*****etu",
-      "gameType": "LIVE",
-      "vendor": "PP",
-      "gameId": "PP0369",
-      "gameCode": "PP0369",
-      "gameName": "Roleta Powerup",
-      "prizeModeId": null,
-      "nodeId": "174328",
-      "winAmount": 75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 08:17:17",
-      "endTime": "2023-09-18 08:18:01",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PP/EN/PP0369.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271794694,
-      "merchantCode": "goal11brl",
-      "customerId": 98719995,
-      "customerName": "*****etu",
-      "gameType": "LIVE",
-      "vendor": "PP",
-      "gameId": "PP0369",
-      "gameCode": "PP0369",
-      "gameName": "Roleta Powerup",
-      "prizeModeId": null,
-      "nodeId": "174328",
-      "winAmount": 75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 08:17:17",
-      "endTime": "2023-09-18 08:18:01",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PP/EN/PP0369.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271754593,
-      "merchantCode": "goal11brl",
-      "customerId": 98719995,
-      "customerName": "*****etu",
-      "gameType": "LIVE",
-      "vendor": "PP",
-      "gameId": "PP0369",
-      "gameCode": "PP0369",
-      "gameName": "Roleta Powerup",
-      "prizeModeId": null,
-      "nodeId": "174328",
-      "winAmount": 75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 05:52:16",
-      "endTime": "2023-09-18 06:05:33",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PP/EN/PP0369.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271684452,
-      "merchantCode": "goal11brl",
-      "customerId": 95214430,
-      "customerName": "********nda",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 02:08:37",
-      "endTime": "2023-09-18 02:16:22",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  },
-  {
-    "vo": {
-      "recordId": 271679660,
-      "merchantCode": "goal11brl",
-      "customerId": 95214430,
-      "customerName": "********nda",
-      "gameType": "RNG",
-      "vendor": "PGE",
-      "gameId": "PGE078",
-      "gameCode": "PGE078",
-      "gameName": "Fortune Ox",
-      "prizeModeId": null,
-      "nodeId": "179187",
-      "winAmount": 75,
-      "playerRank": null,
-      "gameTime": "2023-09-18 01:58:49",
-      "endTime": "2023-09-18 02:01:24",
-      "notAuto": "0",
-      "iconUrl": "https://images.b728484.com:42666/TCG_GAME_ICONS/PGE/EN/PGE078.png"
-    }
-  }
-]
+            mockData:mockData,
+            titleList:[
+                {title:'Lobby',id:'',icon:LobbyIcon},
+                {title:'Crash Games',id:'',icon:Rocket},
+                {title:'New Games',id:'',icon:LobbyIcon},
+                {title:'Live',id:'',icon:Rocket},
+                {title:'Gamge Shows',id:'',icon:LobbyIcon},
+                {title:'Sport',id:'',icon:Rocket},
+            ],
+            chosedIndex:0,
+            componentName:'Lobby'
         }
     },
     computed: {
@@ -590,6 +198,10 @@ export default {
                 var number = this.initNumber + Number(Number(Math.random(0,1)*10).toFixed(2))
                 this.initNumber = Number(number.toFixed(3))
             },5000)
+        },
+        choseType(item,index){
+            this.chosedIndex = index
+            this.componentName = item.title
         }
     }
 
@@ -753,6 +365,40 @@ export default {
                     height: 19px;
                 }
             }
+        }
+    }
+}
+.game_list_box {
+    padding:  10px;
+    .title_list {
+        // padding-left: 10px;
+        display: flex;
+        gap: 15px;
+        flex-shrink: 0;
+        overflow: auto;
+        margin-bottom: 16px;
+        .title_item {
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 12px;
+            border-radius: 20px;
+            box-shadow: 0 3px 7px 0 rgba(6,10,14,.15);
+            background-color: #1a242d;
+            gap: 6px;
+            flex-shrink: 0;
+            img {
+                width: 15px;
+                height: 15px;
+            }
+            .name {
+                font-size: 16px;
+                color: #fff;
+            }
+        }
+        .actived {
+            background: #f12c4c;
         }
     }
 }

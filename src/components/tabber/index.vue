@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import LeftMenu from "../leftMenu/indx.vue"
+import LeftMenu from "../leftMenu/index.vue"
 export default{
   components:{LeftMenu},
   data(){

@@ -27,7 +27,7 @@
                     </view>
                 </view>
                 <view class="action_box">
-                    <view class="refister_btn" @click="toUrl('/pages/login/index')">Register</view>
+                    <view class="refister_btn" @click="toUrl('/pages/register/index')">Register</view>
                     <view class="refister_btn login_btn" @click="toUrl('/pages/login/index')">Login</view>
                 </view>
                 <view class="list_box">

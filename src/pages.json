@@ -17,6 +17,9 @@
 	},
 	{
 		"path": "pages/login/index"
+	},
+	{
+		"path": "pages/register/index"
 	}
   ],
   "tabBar":{

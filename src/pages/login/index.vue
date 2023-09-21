@@ -17,8 +17,8 @@
                 </view>
             </view>
         </view>
-        <div class="login_action">
-            <div class="username_box" v-if="loginType == 1">
+        <view class="login_action">
+            <view class="username_box" v-if="loginType == 1">
                 <u--input
                     placeholder="Telefone/Username"
                     prefixIcon="account-fill"
@@ -31,22 +31,22 @@
                     color="#fff"
                     prefixIconStyle="font-size: 22px;color: #d1d1d1"
                 ></u--input>
-            </div>
-            <div class="username_box" v-else>
-                <div class="phone_box">
-                    <div class="chosed_country" @click="showMenu">
+            </view>
+            <view class="username_box" v-else>
+                <view class="phone_box">
+                    <view class="chosed_country" @click="showMenu">
                         <img :src="country.icon" alt="">
-                        <p class="country_phone">{{country.phone}}</p>
+                        <text class="country_phone">{{country.phone}}</text>
                         <u-icon name="arrow-down-fill" color="#fff" size="8" :class="menuShow ? 'selsec_icon':'no_selec'"></u-icon>
-                    </div>
+                    </view>
                     <u--input
                         placeholder="Phone number"
                         prefixIcon="phone"
                         color="#fff"
                         prefixIconStyle="font-size: 22px;color: #d1d1d1"
                     ></u--input>
-                </div>
-                <div class="msg_box">
+                </view>
+                <view class="msg_box">
                     <u--input
                         placeholder="SMS"
                         prefixIcon="email"
@@ -54,18 +54,18 @@
                         prefixIconStyle="font-size: 22px;color: #d1d1d1"
                     ></u--input>
                     <text class="code_action">Get code</text>
-                </div>
-            </div>
-            <div class="bottom_acton">
-                <div class="first">
+                </view>
+            </view>
+            <view class="bottom_acton">
+                <view class="first">
                     <u-checkbox-group size="20" iconSize="18" activeColor="#0b1118" inactiveColor="#0b1118">
                         <u-checkbox v-model="checked" shape="square" label="Lembrar" activeColor="#0b1118" inactiveColor="#0b1118"></u-checkbox>
                     </u-checkbox-group>
-                    <p class="forget_psd">Forgot password</p>
-                </div>
-            </div>
-            <div class="login_btn">Login</div>
-        </div>
+                    <text class="forget_psd">Forgot password</text>
+                </view>
+            </view>
+            <view class="login_btn">Login</view>
+        </view>
         <u-popup :show="menuShow" @close="menuShow = false" class="country_popup">
             <view class="list_container">
                 <view class="country_top">

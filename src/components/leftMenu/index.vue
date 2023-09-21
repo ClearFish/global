@@ -27,11 +27,11 @@
                     </view>
                 </view>
                 <view class="action_box">
-                    <view class="refister_btn">Register</view>
-                    <view class="refister_btn login_btn">Login</view>
+                    <view class="refister_btn" @click="toUrl('/pages/login/index')">Register</view>
+                    <view class="refister_btn login_btn" @click="toUrl('/pages/login/index')">Login</view>
                 </view>
                 <view class="list_box">
-                    <view class="list_item" v-for="(item,index) in menuList" :key="index">
+                    <view class="list_item" v-for="(item,index) in menuList" :key="index" @click="toUrl(item.url)">
                         <img :src="item.icon" alt="">
                         <text>{{item.name}}</text>
                     </view>
@@ -92,6 +92,13 @@ export default {
         },
         choseLanguage(item,index) {
             this.languageIndex = index
+        },
+        toUrl(url) {
+            console.log(url)
+            this.show = false
+            uni.navigateTo({
+                url: url
+            })
         }
     }
 }

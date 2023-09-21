@@ -2,7 +2,7 @@
     <view class="login_box">
         <view class="top">
              <view class="close_icon">
-                <img src="/static/home/close.svg" alt="" class="close" @click="close" >
+                <img src="/static/home/close.svg" alt="" class="close" @click="backPage" >
             </view>
         </view>
         <view class="top_logo">
@@ -62,8 +62,8 @@ export default {
         }
     },
     methods:{
-        choseType(item,index){
-            this.typeIndex = index
+        backPage() {
+            uni.navigateBack()
         }
     }
 }

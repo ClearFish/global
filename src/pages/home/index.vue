@@ -83,7 +83,7 @@
                 </view>
             </view>
         </view>
-        <Tabbar></Tabbar>
+        <Tabbar :current='2'></Tabbar>
     </view>
 </template>
 

@@ -2,9 +2,11 @@
   <view class="tabberBox flex flex-item-col-center">
     <view class="tabBarItem flex flex-col flex-item-col-center" v-for="(item,index) in list" :key="index" @click="setSelected(item,index)">
       <view>
-        <image :src="current===index? item.selectedIconPath : item.iconPath" class="icon"></image>
+        <image v-if="item.pagePath" :src="current===index? item.selectedIconPath : item.iconPath" class="icon"></image>
+        <image v-else :src="choseMenu ? item.selectedIconPath : item.iconPath" alt="" class="icon"></image>
       </view>
-      <text :class="{'select': current===index}">{{ item.text }}</text>
+      <text v-if="item.pagePath" :class="{'select': current===index}">{{ item.text }}</text>
+      <text v-else :class="{'select': choseMenu}">{{ item.text }}</text>
     </view>
     <LeftMenu ref="leftMenu"/>
   </view>
@@ -14,9 +16,16 @@
 import LeftMenu from "../leftMenu/index.vue"
 export default{
   components:{LeftMenu},
+  props:{
+    current:{
+      type: Number,
+      default: 0
+    }
+  },
   data(){
     return{
-      current:2
+      // current:2,
+      choseMenu:false
     }
   },
   computed:{
@@ -32,28 +41,28 @@ export default{
         {   
           pagePath:'/pages/promotion/index',
           text: 'Promotion',
-           iconPath:'/static/tabbar/gift.svg',
+          iconPath:'/static/tabbar/gift.svg',
           selectedIconPath:"/static/tabbar/gift_active.svg",
           showPopup:false
         },
         {   
           pagePath:'/pages/home/index',
           text: this.$t('tabber.home'),
-           iconPath:'/static/tabbar/home.svg',
+          iconPath:'/static/tabbar/home.svg',
           selectedIconPath:"/static/tabbar/home_active.svg",
           showPopup:false
         },
         {   
           pagePath:'/pages/deposit/index',
           text: 'Deposit',
-           iconPath:'/static/tabbar/deposit.svg',
+          iconPath:'/static/tabbar/deposit.svg',
           selectedIconPath:"/static/tabbar/deposit_active.svg",
           showPopup:false
         },
         {   
           pagePath:'/pages/member/index',
           text: 'Member',
-           iconPath:'/static/tabbar/members.svg',
+          iconPath:'/static/tabbar/members.svg',
           selectedIconPath:"/static/tabbar/members_active.svg",
           showPopup:false
         },
@@ -62,15 +71,31 @@ export default{
 	 } 
   },
   methods:{
+    // setSelected(item,index){
+    //   this.current = index
+    //   if(item.pagePath) {
+    //     uni.switchTab({
+    //       url:this.list[index].pagePath
+    //     })
+    //   }else if(item.showPopup) {
+    //     this.$refs.leftMenu.show ? this.$refs.leftMenu.close() :
+    //     this.$refs.leftMenu.open()
+    //   }
+    // },
     setSelected(item,index){
-      this.current = index
+      console.log(index,this.list[index])
       if(item.pagePath) {
         uni.switchTab({
           url:this.list[index].pagePath
         })
-      }else if(item.showPopup) {
-        this.$refs.leftMenu.show ? this.$refs.leftMenu.close() :
-        this.$refs.leftMenu.open()
+      }else {
+        if(this.$refs.leftMenu.show) {
+          this.$refs.leftMenu.close();
+          this.choseMenu = false
+        }else {
+          this.$refs.leftMenu.open()
+          this.choseMenu = true
+        }
       }
     }
   }

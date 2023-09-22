@@ -58,19 +58,19 @@
                 </view>
             </view>
         </view>
-        <div class="lsit_box">
-            <div class="top">
-                <p class="title">Centro de associados</p>
-            </div>
-            <div class="list">
-                <div class="list_item" v-for="(item,index) in lists" :key="index">
-                    <div class="icon_box">
+        <view class="lsit_box">
+            <view class="top">
+                <text class="title">Centro de associados</text>
+            </view>
+            <view class="list">
+                <view class="list_item" v-for="(item,index) in lists" :key="index">
+                    <view class="icon_box">
                         <img :src="item.icon" alt="">
-                    </div>
-                    <p>{{item.name}}</p>
-                </div>
-            </div>
-        </div>
+                    </view>
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+        </view>
     </view>
 </template>
 <script>

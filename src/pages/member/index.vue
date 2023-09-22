@@ -3,7 +3,7 @@
         <view class="top_bg">
             <img src="/static/member/home_bg.png" alt="">
         </view>
-        <view class="top_header">
+        <view class="top_header" @click="backBtn">
             <u-icon name="arrow-left" color="#fff" size="22"></u-icon>
             <text>My Account</text>
         </view>
@@ -90,6 +90,11 @@ export default {
                 {name:'Centro de recompensa',icon:'/static/member/cup.svg'},
                 {name:'Centro de recompensa',icon:'/static/member/cup.svg'}
             ]
+        }
+    },
+    methods:{
+        backBtn() {
+            uni.navigateBack()
         }
     }   
 }

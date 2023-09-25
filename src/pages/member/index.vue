@@ -94,7 +94,9 @@ export default {
     },
     methods:{
         backBtn() {
-            uni.navigateBack()
+            uni.switchTab({
+                url:'/pages/home/index'
+            })
         }
     }   
 }

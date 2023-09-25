@@ -53,8 +53,8 @@
                     </view>
                 </view>
                 <view class="action_box1">
-                    <view class="action_btn">Despoit</view>
-                    <view class="action_btn">Widthdraw</view>
+                    <view class="action_btn" @click="toUrl('/pages/deposit/index')">Despoit</view>
+                    <view class="action_btn" @click="toUrl('/pages/withdraw/index')">Widthdraw</view>
                 </view>
             </view>
         </view>
@@ -96,6 +96,11 @@ export default {
         backBtn() {
             uni.switchTab({
                 url:'/pages/home/index'
+            })
+        },
+        toUrl(url) {
+            uni.navigateTo({
+                url: url
             })
         }
     }   

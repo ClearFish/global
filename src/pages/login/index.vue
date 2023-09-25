@@ -20,16 +20,18 @@
         <view class="login_action">
             <view class="username_box" v-if="loginType == 1">
                 <u--input
-                    placeholder="Telefone/Username"
+                    :placeholder="$t('login.label2')"
                     prefixIcon="account-fill"
                     color="#fff"
                     prefixIconStyle="font-size: 22px;color: #d1d1d1"
+                    type="number"
                 ></u--input>
                 <u--input
-                    placeholder="Senha"
+                    :placeholder="$t('login.label4')"
                     prefixIcon="lock"
                     color="#fff"
                     prefixIconStyle="font-size: 22px;color: #d1d1d1"
+                    type="password"
                 ></u--input>
             </view>
             <view class="username_box" v-else>
@@ -106,7 +108,16 @@ export default {
                 {name:'中国',icon:'/static/home/CN.svg',phone:'+86'}
             ],
             country:{name:'中国',icon:'/static/home/CN.svg',phone:'+86'},
-            menuShow:false
+            menuShow:false,
+            form: {
+                mobile: '',
+                password: '',
+                invite_code: uni.getStorageSync('sharecode'),
+                code:'',
+                captcha:'',
+                newpassword:''
+            },
+            timer:null
         }
     },
     methods:{
@@ -329,6 +340,31 @@ export default {
                     height: 18px;
                 }
             }
+        }
+    }
+}
+</style>
+<style lang="scss" scoped>
+.username_box {
+    ::v-deep {
+        .u-input {
+             .u-input__content {
+                .u-input__content__field-wrapper {
+                    .u-input__content__field-wrapper__field {
+                        .uni-input-wrapper {
+                                  .uni-input-input:-webkit-autofill { 
+                                        -webkit-box-shadow:0 0 0px 1000px transparent inset !important;
+                                        -webkit-text-fill-color: #333; 
+                                    } 
+                                    .uni-input-input:-internal-autofill-previewed,
+                                    .uni-input-input:-internal-autofill-selected {
+                                        -webkit-text-fill-color: #333 !important;
+                                        transition: background-color 5000s ease-in-out 0s !important;
+                                    }
+                        }
+                    }
+                }
+             }
         }
     }
 }

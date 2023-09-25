@@ -32,7 +32,7 @@
                 ></u-swiper>
             </view>
             <view>
-                <u-notice-bar :text="text1" bgColor="#0f1923" color="#fff" duration="4000"></u-notice-bar>
+                <u-notice-bar :text="text" bgColor="#0f1923" color="#fff" duration="4000"></u-notice-bar>
             </view>
             <view class="scroll_container">
                 <view v-for="(item,index) in scroolList" :key="index" class="scrool_item">
@@ -101,16 +101,9 @@ import LobbyIcon from "@/static/home/lobby.svg"
 import Rocket from "@/static/home/rocket.svg"
 export default {
     components: {Tabbar,Header,ScroolNumber,Lobby},
-    onLoad() {
-        this.getAdvertise() // 轮播
-        this.setNumber()
-    },
-    onShow() {
-    },
     data() {
         return {
             showDownload:true,
-            text1:'AVISO IMPORTANTE',
             list1:[],
             initNumber:2062.628,
             scroolList:[
@@ -128,8 +121,18 @@ export default {
                 {title:'Sport',id:'',icon:Rocket},
             ],
             chosedIndex:0,
-            componentName:'Lobby'
+            componentName:'Lobby',
+            text:''
         }
+    },
+    onLoad() {
+        this.getAdvertise() // 轮播
+        this.setNumber()
+    },
+    onShow() {
+        this.$store.dispatch('GetSite').then(res => {
+            this.text = res.data.notice
+        })
     },
     computed: {
         ...mapState({

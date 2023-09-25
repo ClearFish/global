@@ -20,6 +20,12 @@
 	},
 	{
 		"path": "pages/register/index"
+	},
+	{
+		"path": "pages/setting/change-setpay-password"
+	},
+	{
+		"path": "pages/withdraw/index"
 	}
   ],
   "tabBar":{

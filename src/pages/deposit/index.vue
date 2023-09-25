@@ -20,7 +20,6 @@
                     </view>
                 </view>
             </view>
-
             <template v-if="payType.length>0">
                 <view class="payMentBox">
                     <view class="title">
